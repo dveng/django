@@ -1,8 +1,6 @@
-#-*-coding:utf-8 -8-
-import requests
-import re
+# -*-coding:utf-8 -8-
 import json
-from bs4 import BeautifulSoup
+import re
 
 
 class video_downloader():
@@ -11,7 +9,7 @@ class video_downloader():
         self.api = 'http://api.xfsub.com/xfsub_api/?url='
         self.get_url_api = 'http://api.xfsub.com/xfsub_api/url.php'
         self.url = url.split('#')[0]
-        self.target = self.api+self.url
+        self.target = self.api + self.url
         self.s = request.session()
 
     def get_key(self):
