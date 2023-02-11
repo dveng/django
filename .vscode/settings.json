@@ -1,9 +1,0 @@
-{
-  "python.pythonPath": "C:\\Users\\dsg\\AppData\\Local\\Programs\\Python\\Python36\\python.exe",
-  "python.linting.pylintPath": "pylint",
-  "python.linting.pylintArgs": [
-    "--load-plugins",
-    "pylint_django"
-  ],
-  "python.formatting.autopep8Path": "autopep8"
-}
