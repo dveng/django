@@ -5,6 +5,8 @@ first/
 /mysite/__pycache__
 /polls/__pycache__
 /polls/migrations/__pycache__
+/django
+/other
 
 *.pyc
 *.pyi

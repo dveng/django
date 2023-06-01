@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>main page</title>
+</head>
+<body>
+
+<h1>{{ hello }}</h1>
+
+
+<p>在本教程中，您将学习如何使用MySQL <code>DATEDIFF</code>函数来计算两个日期值之间的天数。</p>
+<h2 id="blogTitle0"><a name="MySQL DATEDIFF函数介绍" class="reference-link"></a><span
+        class="header-link octicon octicon-link"></span>MySQL DATEDIFF函数介绍</h2>
+<p>MySQL <code>DATEDIFF</code>函数计算两个<a href="http://www.yiibai.com/mysql/date.html" title="DATE">DATE</a>，<a
+        href="http://www.yiibai.com/mysql/datetime.html" title="DATETIME">DATETIME</a>或<a
+        href="http://www.yiibai.com/mysql/timestamp.html" title="TIMESTAMP">TIMESTAMP</a>值之间的天数。</p>
+<p>MySQL <code>DATEDIFF</code>函数的语法如下：</p>
+<pre class="language-sql code-toolbar"><code class=" language-sql">DATEDIFF<span class="token punctuation">(</span>date_expression_1<span
+        class="token punctuation">,</span>date_expression_2<span class="token punctuation">)</span><span
+        class="token punctuation">;</span>
+</code><div class="toolbar"><div class="toolbar-item"><span>SQL</span></div></div></pre>
+<p><code>DATEDIFF</code>函数接受两个任何有效日期或日期时间值的参数。如果您传递<code>DATETIME</code>或<code>TIMESTAMP</code>值，则<code>DATEDIFF</code>函数仅将日期部分用于计算，并忽略时间部分。
+</p>
+<p><code>DATEDIFF</code>函数在许多情况下很有用，例如，您可以计算产品需要发送给客户的<a href="http://www.yiibai.com/mysql/interval.html"
+                                                         title="间隔">间隔</a>时间。</p>
+<h2 id="blogTitle1"><a name="MySQL DATEDIFF示例" class="reference-link"></a><span
+        class="header-link octicon octicon-link"></span>MySQL DATEDIFF示例</h2>
+<p>我们来看一下使用<code>DATEDIFF</code>函数的一些例子。</p>
+<p><strong>示例-1</strong></p>
+<pre class="language-sql code-toolbar"><code class=" language-sql">mysql<span class="token operator">&gt;</span> <span
+        class="token keyword">SELECT</span> DATEDIFF<span class="token punctuation">(</span><span class="token string">'2017-08-17'</span><span
+        class="token punctuation">,</span><span class="token string">'2017-08-17'</span><span class="token punctuation">)</span><span
+        class="token punctuation">;</span>
+<span class="token operator">+</span><span class="token comment">-------------------------------------+</span>
+<span class="token operator">|</span> DATEDIFF<span class="token punctuation">(</span><span class="token string">'2017-08-17'</span><span
+            class="token punctuation">,</span><span class="token string">'2017-08-17'</span><span
+            class="token punctuation">)</span> <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">-------------------------------------+</span>
+<span class="token operator">|</span>                                   <span class="token number">0</span> <span
+            class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">-------------------------------------+</span>
+<span class="token number">1</span> <span class="token keyword">row</span> <span class="token operator">in</span> <span
+            class="token keyword">set</span>
+</code><div class="toolbar"><div class="toolbar-item"><span>SQL</span></div></div></pre>
+<p><strong>示例-2</strong></p>
+<pre class="language-sql code-toolbar"><code class=" language-sql">mysql<span class="token operator">&gt;</span> <span
+        class="token keyword">SELECT</span> DATEDIFF<span class="token punctuation">(</span><span class="token string">'2017-08-17'</span><span
+        class="token punctuation">,</span><span class="token string">'2017-08-08'</span><span class="token punctuation">)</span><span
+        class="token punctuation">;</span>
+<span class="token operator">+</span><span class="token comment">-------------------------------------+</span>
+<span class="token operator">|</span> DATEDIFF<span class="token punctuation">(</span><span class="token string">'2017-08-17'</span><span
+            class="token punctuation">,</span><span class="token string">'2017-08-08'</span><span
+            class="token punctuation">)</span> <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">-------------------------------------+</span>
+<span class="token operator">|</span>                                   <span class="token number">9</span> <span
+            class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">-------------------------------------+</span>
+<span class="token number">1</span> <span class="token keyword">row</span> <span class="token operator">in</span> <span
+            class="token keyword">set</span>
+</code><div class="toolbar"><div class="toolbar-item"><span>SQL</span></div></div></pre>
+<p><strong>示例-3</strong></p>
+<pre class="language-sql code-toolbar"><code class=" language-sql">mysql<span class="token operator">&gt;</span> <span
+        class="token keyword">SELECT</span> DATEDIFF<span class="token punctuation">(</span><span class="token string">'2017-08-08'</span><span
+        class="token punctuation">,</span><span class="token string">'2017-08-17'</span><span class="token punctuation">)</span><span
+        class="token punctuation">;</span>
+<span class="token operator">+</span><span class="token comment">-------------------------------------+</span>
+<span class="token operator">|</span> DATEDIFF<span class="token punctuation">(</span><span class="token string">'2017-08-08'</span><span
+            class="token punctuation">,</span><span class="token string">'2017-08-17'</span><span
+            class="token punctuation">)</span> <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">-------------------------------------+</span>
+<span class="token operator">|</span>                                  <span class="token operator">-</span><span
+            class="token number">9</span> <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">-------------------------------------+</span>
+<span class="token number">1</span> <span class="token keyword">row</span> <span class="token operator">in</span> <span
+            class="token keyword">set</span>
+</code><div class="toolbar"><div class="toolbar-item"><span>SQL</span></div></div></pre>
+<p>请参阅<a href="http://www.yiibai.com/mysql/sample-database.html" title="示例数据库(yiibaidb)">示例数据库(yiibaidb)</a>中的以下<code>orders</code>表，其结构如下
+    - </p>
+<pre class="language-sql code-toolbar"><code class=" language-sql">mysql<span class="token operator">&gt;</span> <span
+        class="token keyword">desc</span> orders<span class="token punctuation">;</span>
+<span class="token operator">+</span><span class="token comment">----------------+-------------+------+-----+---------+-------+</span>
+<span class="token operator">|</span> Field          <span class="token operator">|</span> <span class="token keyword">Type</span>        <span
+            class="token operator">|</span> <span class="token boolean">Null</span> <span
+            class="token operator">|</span> <span class="token keyword">Key</span> <span class="token operator">|</span> <span
+            class="token keyword">Default</span> <span class="token operator">|</span> Extra <span
+            class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">----------------+-------------+------+-----+---------+-------+</span>
+<span class="token operator">|</span> orderNumber    <span class="token operator">|</span> <span class="token keyword">int</span><span
+            class="token punctuation">(</span><span class="token number">11</span><span
+            class="token punctuation">)</span>     <span class="token operator">|</span> <span
+            class="token keyword">NO</span>   <span class="token operator">|</span> PRI <span
+            class="token operator">|</span> <span class="token boolean">NULL</span>    <span
+            class="token operator">|</span>       <span class="token operator">|</span>
+<span class="token operator">|</span> orderDate      <span class="token operator">|</span> <span class="token keyword">date</span>        <span
+            class="token operator">|</span> <span class="token keyword">NO</span>   <span
+            class="token operator">|</span>     <span class="token operator">|</span> <span
+            class="token boolean">NULL</span>    <span class="token operator">|</span>       <span
+            class="token operator">|</span>
+<span class="token operator">|</span> requiredDate   <span class="token operator">|</span> <span class="token keyword">date</span>        <span
+            class="token operator">|</span> <span class="token keyword">NO</span>   <span
+            class="token operator">|</span>     <span class="token operator">|</span> <span
+            class="token boolean">NULL</span>    <span class="token operator">|</span>       <span
+            class="token operator">|</span>
+<span class="token operator">|</span> shippedDate    <span class="token operator">|</span> <span class="token keyword">date</span>        <span
+            class="token operator">|</span> YES  <span class="token operator">|</span>     <span class="token operator">|</span> <span
+            class="token boolean">NULL</span>    <span class="token operator">|</span>       <span
+            class="token operator">|</span>
+<span class="token operator">|</span> <span class="token keyword">status</span>         <span
+            class="token operator">|</span> <span class="token keyword">varchar</span><span
+            class="token punctuation">(</span><span class="token number">15</span><span
+            class="token punctuation">)</span> <span class="token operator">|</span> <span
+            class="token keyword">NO</span>   <span class="token operator">|</span>     <span
+            class="token operator">|</span> <span class="token boolean">NULL</span>    <span
+            class="token operator">|</span>       <span class="token operator">|</span>
+<span class="token operator">|</span> comments       <span class="token operator">|</span> <span class="token keyword">text</span>        <span
+            class="token operator">|</span> YES  <span class="token operator">|</span>     <span class="token operator">|</span> <span
+            class="token boolean">NULL</span>    <span class="token operator">|</span>       <span
+            class="token operator">|</span>
+<span class="token operator">|</span> customerNumber <span class="token operator">|</span> <span class="token keyword">int</span><span
+            class="token punctuation">(</span><span class="token number">11</span><span
+            class="token punctuation">)</span>     <span class="token operator">|</span> <span
+            class="token keyword">NO</span>   <span class="token operator">|</span> MUL <span
+            class="token operator">|</span> <span class="token boolean">NULL</span>    <span
+            class="token operator">|</span>       <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">----------------+-------------+------+-----+---------+-------+</span>
+<span class="token number">7</span> <span class="token keyword">rows</span> <span class="token operator">in</span> <span
+            class="token keyword">set</span>
+</code><div class="toolbar"><div class="toolbar-item"><span>SQL</span></div></div></pre>
+<p>假设使用<code>DATEDIFF</code>函数计算所需日期和订单发货日期之间的天数，如下所示：</p>
+<pre class="language-sql code-toolbar"><code class=" language-sql"><span class="token keyword">SELECT</span>
+    orderNumber<span class="token punctuation">,</span>
+    DATEDIFF<span class="token punctuation">(</span>requiredDate<span
+            class="token punctuation">,</span> shippedDate<span class="token punctuation">)</span> daysLeft
+<span class="token keyword">FROM</span>
+    orders
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> daysLeft <span
+            class="token keyword">DESC</span><span class="token punctuation">;</span>
+</code><div class="toolbar"><div class="toolbar-item"><span>SQL</span></div></div></pre>
+<p>执行上面查询语句，得到以下结果 - </p>
+<pre class="language-sql code-toolbar"><code class=" language-sql"><span class="token operator">+</span><span
+        class="token comment">-------------+----------+</span>
+<span class="token operator">|</span> orderNumber <span class="token operator">|</span> daysLeft <span
+            class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">-------------+----------+</span>
+<span class="token operator">|</span>       <span class="token number">10409</span> <span
+            class="token operator">|</span>       <span class="token number">11</span> <span
+            class="token operator">|</span>
+<span class="token operator">|</span>       <span class="token number">10410</span> <span
+            class="token operator">|</span>       <span class="token number">10</span> <span
+            class="token operator">|</span>
+<span class="token operator">|</span>       <span class="token number">10105</span> <span
+            class="token operator">|</span>        <span class="token number">9</span> <span
+            class="token operator">|</span>
+<span class="token operator">|</span>       <span class="token number">10135</span> <span
+            class="token operator">|</span>        <span class="token number">9</span> <span
+            class="token operator">|</span>
+<span class="token operator">|</span>       <span class="token number">10190</span> <span
+            class="token operator">|</span>        <span class="token number">9</span> <span
+            class="token operator">|</span>
+<span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span><span
+            class="token operator">*</span> 此处省略了一大小波数据 <span class="token operator">*</span><span
+            class="token operator">*</span><span class="token operator">*</span><span
+            class="token operator">*</span><span class="token operator">*</span><span
+            class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>
+<span class="token operator">|</span>       <span class="token number">10423</span> <span
+            class="token operator">|</span> <span class="token boolean">NULL</span>     <span
+            class="token operator">|</span>
+<span class="token operator">|</span>       <span class="token number">10424</span> <span
+            class="token operator">|</span> <span class="token boolean">NULL</span>     <span
+            class="token operator">|</span>
+<span class="token operator">|</span>       <span class="token number">10425</span> <span
+            class="token operator">|</span> <span class="token boolean">NULL</span>     <span
+            class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">-------------+----------+</span>
+<span class="token number">327</span> <span class="token keyword">rows</span> <span
+            class="token operator">in</span> <span class="token keyword">set</span>
+</code><div class="toolbar"><div class="toolbar-item"><span>SQL</span></div></div></pre>
+<p>以下语句将获取状态正在处理(<code>In Process</code>)的所有订单，并计算订单日期和所需日期之间的天数：</p>
+<pre class="language-sql code-toolbar"><code class=" language-sql"><span class="token keyword">SELECT</span>
+    orderNumber<span class="token punctuation">,</span>
+    DATEDIFF<span class="token punctuation">(</span>requiredDate<span class="token punctuation">,</span> orderDate<span
+            class="token punctuation">)</span> remaining_days
+<span class="token keyword">FROM</span>
+    orders
+<span class="token keyword">WHERE</span>
+    <span class="token keyword">status</span> <span class="token operator">=</span> <span class="token string">'In Process'</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> remaining_days<span
+            class="token punctuation">;</span>
+</code><div class="toolbar"><div class="toolbar-item"><span>SQL</span></div></div></pre>
+<p>执行上面查询语句，得到以下结果 - </p>
+<pre class="language-sql code-toolbar"><code class=" language-sql"><span class="token operator">+</span><span
+        class="token comment">-------------+----------------+</span>
+<span class="token operator">|</span> orderNumber <span class="token operator">|</span> remaining_days <span
+            class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">-------------+----------------+</span>
+<span class="token operator">|</span>       <span class="token number">10426</span> <span
+            class="token operator">|</span>              <span class="token number">5</span> <span
+            class="token operator">|</span>
+<span class="token operator">|</span>       <span class="token number">10423</span> <span
+            class="token operator">|</span>              <span class="token number">6</span> <span
+            class="token operator">|</span>
+<span class="token operator">|</span>       <span class="token number">10425</span> <span
+            class="token operator">|</span>              <span class="token number">7</span> <span
+            class="token operator">|</span>
+<span class="token operator">|</span>       <span class="token number">10421</span> <span
+            class="token operator">|</span>              <span class="token number">8</span> <span
+            class="token operator">|</span>
+<span class="token operator">|</span>       <span class="token number">10424</span> <span
+            class="token operator">|</span>              <span class="token number">8</span> <span
+            class="token operator">|</span>
+<span class="token operator">|</span>       <span class="token number">10420</span> <span
+            class="token operator">|</span>              <span class="token number">9</span> <span
+            class="token operator">|</span>
+<span class="token operator">|</span>       <span class="token number">10422</span> <span
+            class="token operator">|</span>             <span class="token number">12</span> <span
+            class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">-------------+----------------+</span>
+<span class="token number">7</span> <span class="token keyword">rows</span> <span class="token operator">in</span> <span
+            class="token keyword">set</span>
+</code><div class="toolbar"><div class="toolbar-item"><span>SQL</span></div></div></pre>
+<p>要计算周或月作为间隔时间，可以将<code>DATEDIFF</code>函数的返回值除以<code>7</code>或<code>30</code>，如下查询语句：</p>
+<pre class="language-sql code-toolbar"><code class=" language-sql"><span class="token keyword">SELECT</span>
+    orderNumber<span class="token punctuation">,</span>
+    <span class="token function">ROUND</span><span class="token punctuation">(</span>DATEDIFF<span
+            class="token punctuation">(</span>requiredDate<span class="token punctuation">,</span> orderDate<span
+            class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">7</span><span
+            class="token punctuation">,</span> <span class="token number">2</span><span
+            class="token punctuation">)</span> <span class="token keyword">as</span> weeks<span
+            class="token punctuation">,</span>
+    <span class="token function">ROUND</span><span class="token punctuation">(</span>DATEDIFF<span
+            class="token punctuation">(</span>requiredDate<span class="token punctuation">,</span> orderDate<span
+            class="token punctuation">)</span> <span class="token operator">/</span> <span
+            class="token number">30</span><span class="token punctuation">,</span><span
+            class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">as</span> months
+<span class="token keyword">FROM</span>
+    orders
+<span class="token keyword">WHERE</span>
+    <span class="token keyword">status</span> <span class="token operator">=</span> <span class="token string">'In Process'</span><span
+            class="token punctuation">;</span>
+</code><div class="toolbar"><div class="toolbar-item"><span>SQL</span></div></div></pre>
+<p>执行上面查询语句，得到以下结果 - </p>
+<pre class="language-sql code-toolbar"><code class=" language-sql"><span class="token operator">+</span><span
+        class="token comment">-------------+-------+--------+</span>
+<span class="token operator">|</span> orderNumber <span class="token operator">|</span> weeks <span
+            class="token operator">|</span> months <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">-------------+-------+--------+</span>
+<span class="token operator">|</span>       <span class="token number">10420</span> <span
+            class="token operator">|</span> <span class="token number">1.29</span>  <span
+            class="token operator">|</span> <span class="token number">0.3</span>    <span
+            class="token operator">|</span>
+<span class="token operator">|</span>       <span class="token number">10421</span> <span
+            class="token operator">|</span> <span class="token number">1.14</span>  <span
+            class="token operator">|</span> <span class="token number">0.27</span>   <span
+            class="token operator">|</span>
+<span class="token operator">|</span>       <span class="token number">10422</span> <span
+            class="token operator">|</span> <span class="token number">1.71</span>  <span
+            class="token operator">|</span> <span class="token number">0.4</span>    <span
+            class="token operator">|</span>
+<span class="token operator">|</span>       <span class="token number">10423</span> <span
+            class="token operator">|</span> <span class="token number">0.86</span>  <span
+            class="token operator">|</span> <span class="token number">0.2</span>    <span
+            class="token operator">|</span>
+<span class="token operator">|</span>       <span class="token number">10424</span> <span
+            class="token operator">|</span> <span class="token number">1.14</span>  <span
+            class="token operator">|</span> <span class="token number">0.27</span>   <span
+            class="token operator">|</span>
+<span class="token operator">|</span>       <span class="token number">10425</span> <span
+            class="token operator">|</span> <span class="token number">1</span>     <span
+            class="token operator">|</span> <span class="token number">0.23</span>   <span
+            class="token operator">|</span>
+<span class="token operator">|</span>       <span class="token number">10426</span> <span
+            class="token operator">|</span> <span class="token number">0.71</span>  <span
+            class="token operator">|</span> <span class="token number">0.17</span>   <span
+            class="token operator">|</span>
+<span class="token operator">+</span><span class="token comment">-------------+-------+--------+</span>
+<span class="token number">7</span> <span class="token keyword">rows</span> <span class="token operator">in</span> <span
+            class="token keyword">set</span>
+</code><div class="toolbar"><div class="toolbar-item"><span>SQL</span></div></div></pre>
+<p>请注意，<code>ROUND</code>函数用于舍入结果。</p>
+<p>在本教程中，您已经学习了如何使用MySQL <code>DATEDIFF</code>函数来计算两个日期值之间的天数。</p>
+
+<br>
+<p style="text-align:center;float:left;width:100%;margin-top:24px;margin-bottom:18px;">
+    <!--<button class="layui-btn layui-btn-danger" id="btn-reward"> ¥ 我要打、 </button>&nbsp;&nbsp;-->
+    <button class="layui-btn" id="article-perfect">
+        <i class="layui-icon layui-icon-edit"></i>纠错/补充
+    </button>
+    <button class="layui-btn layui-btn-normal" id="action-collection">
+        <i class="layui-icon layui-icon-rate"></i>收藏
+    </button>
+</p>
+
+<div style="width:100%;margin-bottom: 16px; min-height: 180px;margin-top:18px;float:left;">
+
+						<span style="float:left;">上一篇：<a
+                                href="https://www.yiibai.com/mysql/functions.html#article-start" title="MySQL函数"><i
+                                class="layui-icon"></i>
+								MySQL函数</a></span>
+    <span style="float:right;">下一篇：<a href="https://www.yiibai.com/mysql/nodejs.html#article-start" style="float:right;"
+                                      title="下一篇：MySQL+Node.js连接和操作"><i class="layui-icon"></i>
+								MySQL+Node.js连接和操作</a></span>
+    <div id="googlead" style="float:left;margin-top:8px;">
+        <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- yiibai下方 -->
+        <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+             data-ad-client="ca-pub-1090193214637198" data-ad-slot="6494738921"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+
+</div>
+
+
+<!--// google adv -->
+<div style="width:100%;float:left;">
+    <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-1090193214637198"
+         data-ad-slot="1254304051"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+
+</body>
+</html>
